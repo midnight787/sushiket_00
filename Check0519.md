@@ -1,5 +1,5 @@
 # Entered
 - [x] shinari
-- [ ] tekuno
+- [x] tekuno
 - [x] potetokun
 - [ ] denchos
