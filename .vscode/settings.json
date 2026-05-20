@@ -1,0 +1,5 @@
+{
+  // Cline が .clinerules/ を読み込む設定
+  "cline.customInstructions": ".clinerules",
+  "cline.rules": ".clinerules"
+}
