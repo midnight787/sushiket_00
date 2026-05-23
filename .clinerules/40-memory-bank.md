@@ -6,10 +6,14 @@
 **必ず以下のファイルをこの順番で読んでから作業を始める。**
 
 ```
-cline_docs/projectbrief.md   # ゲーム概要・コアメカニクス・チーム構成
-cline_docs/techContext.md    # 技術スタック・アーキテクチャ・注意事項
-cline_docs/activeContext.md  # 今どこを作っているか・直近の状態
-cline_docs/progress.md       # 完了済み・進行中・未着手タスク一覧
+cline_docs/projectbrief.md          # ゲーム概要・コアメカニクス・チーム構成
+cline_docs/techContext.md           # 技術スタック・アーキテクチャ・注意事項
+cline_docs/activeContext.md         # 今どこを作っているか・直近の状態
+cline_docs/progress.md              # 完了済み・進行中・未着手タスク一覧
+.clinerules/workflows/task-done.md   # /task-done の手順
+.clinerules/workflows/focus-update.md # /focus-update の手順
+.clinerules/workflows/save.md        # /save の手順
+.clinerules/workflows/commit-push.md # /commit-push の手順
 ```
 
 ## 更新ルール
