@@ -111,3 +111,6 @@ InitTestScene*.unity*
 # Backup files
 *.bak
 *.bak.meta
+
+# shinari作業フォルダ
+/[Ss]hinari_work/*
