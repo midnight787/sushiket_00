@@ -16,9 +16,13 @@ namespace Platformer.Gameplay
             var player = model.player;
             player.collider2d.enabled = true;
             player.controlEnabled = false;
+            player.isDead = false;
             if (player.audioSource && player.respawnAudio)
                 player.audioSource.PlayOneShot(player.respawnAudio);
-            player.health.Increment();
+            if (player.hpManager != null)
+                player.hpManager.RestoreFullHP();
+            else
+                player.health.Increment();
             player.Teleport(model.spawnPoint.transform.position);
             player.jumpState = PlayerController.JumpState.Grounded;
             player.animator.SetBool("dead", false);

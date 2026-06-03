@@ -46,7 +46,10 @@ namespace Platformer.Gameplay
             }
             else
             {
-                Schedule<PlayerDeath>();
+                if (player.hpManager != null)
+                    player.hpManager.TakeDamage(1);
+                else
+                    Schedule<PlayerDeath>();
             }
         }
     }
