@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Test-NetConnection -ComputerName 127.0.0.1 -Port 8080 -InformationLevel Quiet)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8080/\" -Method GET -TimeoutSec 5 -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\"; $r.Content | Select-Object -First 500 } catch { \"Error: $\\($_.Exception.Message\\)\" })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8080/mcp\" -Method GET -TimeoutSec 5 -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\"; $r.Content | Select-Object -First 500 } catch { \"Error: $\\($_.Exception.Message\\)\" })",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8080/mcp)",
+      "Bash(curl -s -X POST http://127.0.0.1:8080/mcp -H \"Content-Type: application/json\" -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2024-11-05\",\"capabilities\":{},\"clientInfo\":{\"name\":\"test\",\"version\":\"1.0\"}}}')",
+      "Bash(curl -s -X POST http://127.0.0.1:8080/mcp -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2024-11-05\",\"capabilities\":{},\"clientInfo\":{\"name\":\"test\",\"version\":\"1.0\"}}}')",
+      "Bash(curl -s -X POST http://127.0.0.1:8080/mcp -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" -d '{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}')",
+      "Bash(python -c \"import sys,json; data=sys.stdin.read\\(\\); lines=[l for l in data.split\\('\\\\n'\\) if l.startswith\\('data:'\\)]; print\\(json.dumps\\(json.loads\\(lines[0][5:]\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(curl -v -X POST http://127.0.0.1:8080/mcp -H \"Content-Type: application/json\" -H \"Accept: application/json, text/event-stream\" -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2024-11-05\",\"capabilities\":{},\"clientInfo\":{\"name\":\"test\",\"version\":\"1.0\"}}}')",
+      "Bash(curl -s -X POST http://127.0.0.1:8080/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -H 'mcp-session-id: dbcbc5d5c42440c4a70565dbafd2c2b5' -d '{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}')"
+    ]
+  },
+    "mcpServers": {
+    "unity": {
+      "type": "sse",
+      "url": "http://127.0.0.1:49492/sse"
+    }
+  }
+}
