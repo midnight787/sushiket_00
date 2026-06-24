@@ -1,6 +1,18 @@
-flowchart TD
-    A[Start] -->|今日の破壊| B(ブロック破壊)
-    B --> C{ザコマセイモと遭遇}
-    C -->|接触| D[死亡]
-    C -->|非接触| E[安全通過]
-    C -->|上から落ちる| F[踏み潰しモーション]
+flowchart LR
+  subgraph "Original Agent Loop base is cline"
+      me[Human]
+      DS[DeepSeekV4-pro]
+      code[claude code]
+      ag[Antigravity]
+  end
+    
+
+  me -->|全体指示| DS
+  
+  DS --->|CLI呼び出し| code
+  DS --->|CLI呼び出し| ag
+
+  code --->|エージェントループ回答| DS
+  ag --->|エージェントループ回答| DS
+
+  ag <-->|相互検証| code
