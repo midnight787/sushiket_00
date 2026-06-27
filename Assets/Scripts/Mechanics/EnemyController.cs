@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Platformer.Gameplay;
 using UnityEngine;
@@ -23,7 +23,7 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => _collider.bounds;
 
-        void Awake()
+        protected virtual void Awake()
         {
             control = GetComponent<AnimationController>();
             _collider = GetComponent<Collider2D>();
@@ -31,7 +31,7 @@ namespace Platformer.Mechanics
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
+        protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
@@ -42,7 +42,7 @@ namespace Platformer.Mechanics
             }
         }
 
-        void Update()
+        protected virtual void Update()
         {
             if (path != null)
             {
